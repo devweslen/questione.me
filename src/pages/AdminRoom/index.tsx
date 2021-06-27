@@ -1,16 +1,19 @@
 import { useHistory, useParams } from "react-router-dom"
+import { toast, Toaster } from "react-hot-toast"
 
-import logoImg from '../assets/images/logo.svg'
-import deleteImg from '../assets/images/delete.svg'
-import checkImg from '../assets/images/check.svg'
-import answerImg from '../assets/images/answer.svg'
+import './styles.scss'
 
-import '../styles/room.scss'
-import { Button } from "../components/Button"
-import { RoomCode } from "../components/RoomCode"
-import { Question } from "../components/Question"
-import { useRoom } from "../hooks/useRoom"
-import { database } from "../services/firebase"
+import logoImg from '../../assets/images/logo.svg'
+import deleteImg from '../../assets/images/delete.svg'
+import checkImg from '../../assets/images/check.svg'
+import answerImg from '../../assets/images/answer.svg'
+
+import { useRoom } from "../../hooks/useRoom"
+import { database } from "../../services/firebase"
+
+import { Button } from "../../components/Button"
+import { RoomCode } from "../../components/RoomCode"
+import { Question } from "../../components/Question"
 
 type RoomParams = {
   id: string
@@ -52,11 +55,19 @@ export function AdminRoom(){
       await database
       .ref(`rooms/${roomId}/questions/${questionId}`)
       .remove()
+
+      toast.success("Questão deletada com sucesso!", {
+        style: {
+          background: '#014F86',
+          color: '#fff'
+        }
+      })
     }
   }
 
   return (
-    <div id="page-room">
+    <div id="page-admin-room">
+      <Toaster />
       <header>
         <div className="content">
           <img src={logoImg} alt="LetMeAsk" />
@@ -64,17 +75,20 @@ export function AdminRoom(){
             <RoomCode code={roomId}></RoomCode>
             <Button 
               onClick={handleEndRoom} 
-              isOutlined>Encerrar sessão
+              isOutlined
+            >
+                <img src={deleteImg} alt="Deletar sala" />
+                <span>Encerrar sessão</span>
             </Button>
           </div>
         </div>
       </header>
       <main>
         <div className="room-title">
-          <h2>Sala {title}</h2>
+          <h2><strong>Sala:</strong> {title}</h2>
           {
             questions.length > 0 && (
-              <span>{questions.length} pergunta(s)</span>
+              <div>{questions.length} <span>pergunta(s)</span></div>
             ) 
           }
         </div>

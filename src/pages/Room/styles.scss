@@ -1,6 +1,6 @@
 #page-room {
   header {
-    padding: 24px;
+    padding: 1.5rem;
     border-bottom: 1px solid #e2e2e2;
 
     .content {
@@ -16,7 +16,7 @@
 
       > div {
         display: flex;
-        gap: 8px;
+        gap: 0.5rem;
 
         button {
           height: 40px;
@@ -29,24 +29,34 @@
     max-width: 800px;
     margin: 0 auto;
 
+    @media screen and (max-width: 900px){
+      margin: 32px;
+    }
+
     .room-title {
-      margin: 32px 0 24px;
+      margin: 2rem 0 1.5rem;
       display: flex;
       align-items: center;
 
       h2 {
         font-family: "Poppins", sans-serif;
-        font-size: 24px;
-        color: #29292e;
+        font-size: 1.5rem;
+        color: var(--color-black);
       }
 
-      span {
-        margin-left: 16px;
+      div {
+        margin-left: 1rem;
         background: #e559f9;
         border-radius: 9999px;
-        padding: 8px 16px;
+        padding: 0.5rem 1rem;
         color: #fff;
         font-weight: 500;
+
+        @media screen and (max-width: 900px){
+          span{
+            display: none;
+          }
+        }
       }
     }
 
@@ -55,9 +65,9 @@
         min-height: 130px;
         width: 100%;
         border: 0;
-        padding: 16px;
-        border-radius: 8px;
-        background-color: #fefefe;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: var(--color-white);
 
         box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
 
@@ -68,37 +78,45 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 16px;
+        margin: 1rem;
+        
+        @media screen and (max-width: 900px){
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 16px;
+          margin: 16px 0;
+        }
 
         .user-info {
           display: flex;
           align-items: center;
 
           img {
-            width: 32px;
-            height: 32px;
+            width: 2rem;
+            height: 2rem;
             border-radius: 50%;
           }
 
           span {
-            margin-left: 8px;
-            color: #29292e;
+            margin-left: 0.5rem;
+            color: var(--color-black);
             font-weight: 500;
-            font-size: 14px;
+            font-size: 0.875rem;
           }
         }
 
         span {
-          font-size: 14px;
+          font-size: 0.875rem;
           color: #737380;
           font-weight: 500;
 
           button {
             background: transparent;
             border: 0;
-            color: #835afd;
+            color: var(--color-blue);
             text-decoration: underline;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
 
             cursor: pointer;
@@ -108,7 +126,7 @@
     }
 
     .question-list {
-      margin-top: 32px;
+      margin-top: 2rem;
     }
   }
 }

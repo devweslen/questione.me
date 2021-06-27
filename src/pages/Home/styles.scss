@@ -1,44 +1,63 @@
-#page-auth {
+#page-home {
   height: 100vh;
   display: flex;
   align-items: stretch;
+  
+  @media screen and (max-width: 900px){
+    width:100vw;
+    flex-direction: column;
+  }
 
   aside {
     flex: 5;
 
-    background: #835afd;
+    background: var(--color-blue);
     color: #fff;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 120px 80px;
+    
+    @media screen and (max-width: 900px){
+      align-items: center;
+      padding: 0 32px;
+    }
 
     img {
       width: 320px;
+
+      @media screen and (max-width: 900px){
+        display: none;
+      }
     }
 
     strong {
       font: 700 36px "Poppins", sans-serif;
       line-height: 42px;
-      padding-top: 16px;
+      padding-top: 1rem;
     }
 
     p {
-      font-size: 24px;
-      line-height: 32px;
-      padding-top: 16px;
-      color: #f8f8f8;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      padding-top: 1rem;
+      color: var(--color-white)-medium;
     }
   }
 
   main {
     flex: 8;
 
-    padding: 0 32px;
+    padding: 0 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 900px){
+      width: 100%;
+      padding: 0;
+    }
 
     .main-content {
       display: flex;
@@ -48,47 +67,57 @@
       max-width: 320px;
       text-align: center;
 
+
+      @media screen and (max-width: 900px){
+        max-width: 100%;
+        padding: 0 32px;
+      }
+
       > img {
         align-self: center;
       }
 
       h2 {
-        font-size: 24px;
+        font-size: 1.5rem;
         margin: 64px 0 24px;
         font-family: "Poppins", sans-serif;
       }
-
+      
       .create-room {
         margin-top: 64px;
         height: 50px;
-        border-radius: 8px;
+        border-radius: 0.5rem;
         font-weight: 500;
         background-color: #ea4435;
         color: #fff;
-
+        
         display: flex;
         align-items: center;
         justify-content: center;
-
+        
         cursor: pointer;
         border: 0;
-
+        
         transition: filter 0.2s;
 
-        img {
-          margin-right: 8px;
+        @media screen and (max-width: 900px){
+          margin-top: 32px;
         }
-
+        
+        img {
+          margin-right: 0.5rem;
+        }
+        
         &:hover {
           filter: brightness(0.9);
         }
       }
-
+      
       .separator {
-        font-size: 14px;
+        font-size: 0.875rem;
         color: #a8a8b3;
 
-        margin: 32px 0;
+        margin: 2rem 0;
         display: flex;
         align-items: center;
 
@@ -101,24 +130,24 @@
         }
 
         &::before {
-          margin-right: 16px;
+          margin-right: 1rem;
         }
         &::after {
-          margin-left: 16px;
+          margin-left: 1rem;
         }
       }
 
       form {
         input {
           height: 50px;
-          border-radius: 8px;
-          padding: 0 16px;
+          border-radius: 0.5rem;
+          padding: 0 1rem;
           background: #fff;
           border: 1px solid #a8a8b3;
         }
 
         button {
-          margin-top: 16px;
+          margin-top: 1rem;
         }
 
         button,
@@ -128,9 +157,9 @@
       }
 
       p {
-        font-size: 14px;
+        font-size: 0.875rem;
         color: #737380;
-        margin-top: 16px;
+        margin-top: 1rem;
 
         a {
           color: #e559f9;

@@ -1,14 +1,15 @@
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { database } from '../services/firebase';
+import { database } from '../../services/firebase'
 
-import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
+import './styles.scss'
 
-import '../styles/auth.scss';
-import { Button } from '../components/Button';
-import { useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
+import illustrationImg from '../../assets/images/illustration.svg'
+import logoImg from '../../assets/images/logo.svg'
+
+import { useAuth } from '../../hooks/useAuth'
+
+import { Button } from '../../components/Button'
 
 export function NewRoom() {
   const { user } = useAuth()
@@ -27,14 +28,14 @@ export function NewRoom() {
       userId: user?.id
     })
 
-    history.push(`/rooms/${firebaseRoom.key}`)
+    history.push(`/admin/rooms/${firebaseRoom.key}`)
   }
 
   return (
-    <div id="page-auth">
+    <div id="page-new-room">
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
-        <strong>Crie salas de Q&amp;A ao-vivo</strong>
+        <strong>Crie salas de Q&ampA ao-vivo</strong>
         <p>
           Tire as dúvidas da sua audiência em tempo-real
         </p>

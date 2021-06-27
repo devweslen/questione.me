@@ -1,15 +1,18 @@
-import { useParams } from "react-router-dom"
-
-import logoImg from '../assets/images/logo.svg'
-
-import '../styles/room.scss'
-import { Button } from "../components/Button"
-import { RoomCode } from "../components/RoomCode"
-import { Question } from "../components/Question"
 import { FormEvent, useState } from "react"
-import { useAuth } from "../hooks/useAuth"
-import { database } from "../services/firebase"
-import { useRoom } from "../hooks/useRoom"
+import { useParams } from "react-router-dom"
+import toast, { Toaster } from "react-hot-toast"
+
+import './styles.scss'
+
+import logoImg from '../../assets/images/logo.svg'
+
+import { database } from "../../services/firebase"
+import { useAuth } from "../../hooks/useAuth"
+import { useRoom } from "../../hooks/useRoom"
+
+import { Button } from "../../components/Button"
+import { RoomCode } from "../../components/RoomCode"
+import { Question } from "../../components/Question"
 
 type RoomParams = {
   id: string
@@ -44,6 +47,13 @@ export function Room(){
 
     await database.ref(`rooms/${roomId}/questions`).push(question)
 
+    toast.success("Questão criada com sucesso!", {
+      style: {
+        background: '#014F86',
+        color: '#fff'
+      }
+    })
+
     setNewQuestion("")
   }
 
@@ -52,15 +62,31 @@ export function Room(){
       await database
         .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
         .remove()
+      toast("Gostei removido!", {
+        icon: "👎",
+        style: {
+          background: '#014F86',
+          color: '#fff'
+        }
+      })
     }else{
       await database
         .ref(`rooms/${roomId}/questions/${questionId}/likes`)
-        .push({ authorId: user?.id })  
+        .push({ authorId: user?.id }) 
+        
+      toast("Gostei adicionado!", {
+        icon: "👍",
+        style: {
+          background: '#014F86',
+          color: '#fff'
+        }
+      })
     }
   }
 
   return (
     <div id="page-room">
+      <Toaster />
       <header>
         <div className="content">
           <img src={logoImg} alt="LetMeAsk" />
@@ -72,7 +98,7 @@ export function Room(){
           <h2>Sala {title}</h2>
           {
             questions.length > 0 && (
-              <span>{questions.length} pergunta(s)</span>
+              <div>{questions.length} <span>pergunta(s)</span></div>
             ) 
           }
         </div>

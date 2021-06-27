@@ -1,14 +1,39 @@
+:root{
+  // Colors
+  --color-black: #29292e;
+  --color-blue: #014F86;
+  --color-grey-dark: #737380;
+  --color-grey-light: #DBDCDD;
+  --color-grey-medium: #A8A8B3;
+  --color-pink: #E559F9;
+  --color-white: #fefefe;
+  --color-white-medium: #F8F8F8;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
+@media (max-width: 1080) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
 body {
-  background: #f8f8f8;
-  color: #29292e;
+  background: var(--color-white)-medium;
+  color: var(--color-black);
 }
 
 body, button, input, textarea{
-  font: 400 16px 'Roboto', sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
 }

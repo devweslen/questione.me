@@ -1,10 +1,10 @@
 .button {
   height: 50px;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   font-weight: 500;
-  background-color: #835afd;
+  background-color: var(--color-blue);
   color: #fff;
-  padding: 0 32px;
+  padding: 0 2rem;
 
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
   transition: filter 0.2s;
 
   img {
-    margin-right: 8px;
+    margin-right: 0.5rem;
   }
 
   &:not(:disabled):hover {
@@ -30,7 +30,17 @@
 
   &.outlined {
     background: #fff;
-    border: 1px solid #835afd;
-    color: #835afd;
+    border: 1px solid var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  @media screen and (max-width: 900px){
+    padding: 0 12px;
+    img{
+      margin: 0;
+    }
+    span{
+      display: none;
+    }
   }
 }

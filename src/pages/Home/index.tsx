@@ -1,17 +1,19 @@
-import { useHistory } from 'react-router-dom';
-import { database } from '../services/firebase';
-
-import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
-import googleIconImg from '../assets/images/google-icon.svg'
-
-import { Button } from '../components/Button';
-
-import '../styles/auth.scss';
-import { useAuth } from '../hooks/useAuth';
 import { FormEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { database } from '../../services/firebase';
 
-export function Home() {
+import './styles.scss';
+
+import illustrationImg from '../../assets/images/illustration.svg'
+import logoImg from '../../assets/images/logo.svg'
+import googleIconImg from '../../assets/images/google-icon.svg'
+
+import { useAuth } from '../../hooks/useAuth';
+
+import { Button } from '../../components/Button';
+
+
+export function Home() {    
   const history = useHistory()
   const { user, signInWithGoogle } = useAuth()
   const [roomCode, setRoomCode] = useState("")
@@ -45,7 +47,7 @@ export function Home() {
   }
 
   return (
-    <div id="page-auth">
+    <div id="page-home">
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de Q&amp;A ao-vivo</strong>
